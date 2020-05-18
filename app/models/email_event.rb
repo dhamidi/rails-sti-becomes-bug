@@ -8,5 +8,5 @@ class EmailEvent < Event
 
   enum subtype: SUBTYPES
 
-  validates :outcome, inclusion: { in: %w[follow_up archive]}
+  validates :outcome, inclusion: { in: %w[follow_up archive] }
 end

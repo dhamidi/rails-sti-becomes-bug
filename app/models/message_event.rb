@@ -7,5 +7,5 @@ class MessageEvent < Event
   attribute :outcome, :string
   enum subtype: SUBTYPES
 
-  validates :outcome, inclusion: { in: %w[user_notified message_delivered]}
+  validates :outcome, inclusion: { in: %w[user_notified message_delivered] }
 end

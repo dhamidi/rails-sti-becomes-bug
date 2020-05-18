@@ -1,24 +1,17 @@
-# README
+# STI `.becomes!` bug
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository exists to showcase unintuitive behavior (possibly a bug) when using Single Table Inheritance (STI) together with `becomes!`.
 
-Things you may want to cover:
+The test application defines three models:
 
-* Ruby version
+* [Event](./app/models/event.rb), the STI base model 
+* [EmailEvent](./app/models/email_event.rb), one inherited model
+* [MessageEvent](./app/models/message_event.rb), another inherited model
 
-* System dependencies
 
-* Configuration
+Both `EmailEvent` and `MessageEvent` have the same fields (`outcome` and `subtype`), but different validations for these fields.
 
-* Database creation
+When converting one into the other using `#becomes!`, the validations of the old model are still applied.
 
-* Database initialization
+This behavior is shown in a [failing spec](./spec/models/event_spec.rb)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
